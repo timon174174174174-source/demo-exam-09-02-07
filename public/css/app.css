@@ -57,15 +57,20 @@ body {
 .appbar {
     background: var(--brand-grad);
     color: #fff;
-    padding: 18px 18px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
     position: sticky;
     top: 0;
     z-index: 20;
     box-shadow: var(--shadow-sm);
+}
+
+.appbar__inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px 18px 16px;
 }
 
 .appbar__brand {
@@ -83,6 +88,22 @@ body {
 .appbar__brand b { font-weight: 800; opacity: .85; }
 
 .appbar__sub { font-size: 13px; opacity: .9; font-weight: 500; }
+
+/* Десктопная навигация в шапке (на мобильном скрыта — там нижний таб-бар) */
+.appbar__nav { display: none; align-items: center; gap: 6px; }
+.appbar__link {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 9px 14px; border-radius: 10px;
+    color: #fff; text-decoration: none; font: inherit; font-weight: 600; font-size: 14px;
+    background: transparent; border: none; cursor: pointer;
+    transition: background .15s ease;
+}
+.appbar__link:hover { background: rgba(255, 255, 255, .16); }
+.appbar__link.is-active { background: rgba(255, 255, 255, .24); }
+.appbar__user { display: inline-flex; align-items: center; gap: 7px; color: #fff; opacity: .92; font-weight: 600; font-size: 14px; margin-left: 6px; }
+
+/* Узкая колонка для страниц-форм (вход, регистрация, оформление заявки) */
+.narrow { max-width: 460px; margin: 0 auto; }
 
 /* Контент ------------------------------------------------------------------- */
 .content {
@@ -433,6 +454,37 @@ select.field__control {
     animation: tab-in .3s ease both;
 }
 @keyframes tab-in { from { width: 0; opacity: 0; } to { width: 26px; opacity: 1; } }
+
+/* ===== Десктопный макет (широкий экран) ===================================== */
+@media (min-width: 860px) {
+    body { display: block; background: var(--bg); }
+    .device { max-width: none; width: 100%; box-shadow: none; background: var(--bg); }
+
+    .appbar__inner { padding: 14px 24px; }
+    .appbar__nav { display: flex; }
+    .tabbar { display: none; }
+
+    .content { max-width: 1140px; margin: 0 auto; width: 100%; padding: 30px 24px 56px; }
+    .page-title { font-size: 28px; }
+    .page-subtitle { font-size: 15px; }
+
+    .stats { grid-template-columns: repeat(4, 1fr); }
+    .filters { grid-template-columns: repeat(4, 1fr); align-items: end; }
+    .filters__actions { grid-column: 1 / -1; justify-content: flex-end; }
+    .filters__actions .btn { flex: 0 0 auto; min-width: 160px; }
+
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; align-items: start; }
+    .grid .booking { margin-bottom: 0; }
+    .grid .empty { grid-column: 1 / -1; }
+
+    .slider__slide img { aspect-ratio: auto; height: 340px; }
+
+    .btn--inline { width: auto; min-width: 240px; }
+}
+
+@media (min-width: 1200px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+}
 
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }

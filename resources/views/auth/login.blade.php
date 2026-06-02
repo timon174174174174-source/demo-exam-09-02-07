@@ -3,6 +3,7 @@
 @section('title', 'Вход')
 
 @section('content')
+    <div class="narrow">
     <div class="auth__hero">
         <h1 class="page-title">С возвращением 👋</h1>
         <p class="page-subtitle">Войдите, чтобы бронировать помещения для конференций.</p>
@@ -41,5 +42,6 @@
     <div class="auth__demo">
         Демо-доступ: пользователь <b>user123 / password123</b><br>
         администратор <b>Admin26 / Demo20</b>
+    </div>
     </div>
 @endsection

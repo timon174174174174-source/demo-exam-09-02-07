@@ -53,6 +53,7 @@
         </div>
     </form>
 
+    <div class="grid">
     @forelse ($bookings as $booking)
         <article class="booking admin-booking" style="animation-delay: {{ $loop->index * 60 }}ms">
             <div class="admin-booking__top">
@@ -98,6 +99,7 @@
             <p>Заявок по заданным условиям не найдено.</p>
         </div>
     @endforelse
+    </div>
 
     @if ($bookings->hasPages())
         <div class="pager">

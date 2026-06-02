@@ -7,6 +7,7 @@
 @endpush
 
 @section('content')
+    <div class="narrow">
     <h1 class="page-title">Оформление заявки</h1>
     <p class="page-subtitle">Забронируйте помещение для проведения конференции.</p>
 
@@ -60,6 +61,7 @@
 
         <button class="btn" type="submit"><i class="bi bi-send-check"></i> Отправить заявку</button>
     </form>
+    </div>
 @endsection
 
 @push('scripts')

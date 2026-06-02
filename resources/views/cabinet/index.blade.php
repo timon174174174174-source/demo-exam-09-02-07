@@ -23,12 +23,13 @@
         </div>
     </div>
 
-    <a href="{{ route('bookings.create') }}" class="btn">
+    <a href="{{ route('bookings.create') }}" class="btn btn--inline">
         <i class="bi bi-plus-circle"></i> Оформить новую заявку
     </a>
 
     <h2 class="section-title"><i class="bi bi-clock-history"></i> История заявок</h2>
 
+    <div class="grid">
     @forelse ($bookings as $booking)
         <article class="booking" style="animation-delay: {{ $loop->index * 60 }}ms">
             <div class="booking__head">
@@ -85,6 +86,7 @@
             <a href="{{ route('bookings.create') }}" class="btn btn--sm">Оформить первую заявку</a>
         </div>
     @endforelse
+    </div>
 @endsection
 
 @push('scripts')

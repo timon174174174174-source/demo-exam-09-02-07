@@ -3,6 +3,7 @@
 @section('title', 'Регистрация')
 
 @section('content')
+    <div class="narrow">
     <div class="auth__hero">
         <h1 class="page-title">Создать аккаунт</h1>
         <p class="page-subtitle">Зарегистрируйтесь, чтобы оформлять заявки на бронирование.</p>
@@ -73,4 +74,5 @@
         Уже зарегистрированы?
         <a href="{{ route('login') }}">Вход</a>
     </p>
+    </div>
 @endsection

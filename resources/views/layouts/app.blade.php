@@ -17,11 +17,37 @@
     <div class="device">
         <div class="app">
             <header class="appbar">
-                <a class="appbar__brand" href="{{ url('/') }}">
-                    <i class="bi bi-mic-fill"></i>
-                    <span>Конференции<b>.РФ</b></span>
-                </a>
-                @yield('appbar-action')
+                <div class="appbar__inner">
+                    <a class="appbar__brand" href="{{ url('/') }}">
+                        <i class="bi bi-mic-fill"></i>
+                        <span>Конференции<b>.РФ</b></span>
+                    </a>
+
+                    @auth
+                        <nav class="appbar__nav">
+                            @if (auth()->user()->isAdmin())
+                                <a href="{{ route('admin.dashboard') }}"
+                                   class="appbar__link {{ request()->routeIs('admin.*') ? 'is-active' : '' }}">
+                                    <i class="bi bi-grid-1x2-fill"></i> Заявки
+                                </a>
+                            @else
+                                <a href="{{ route('cabinet') }}"
+                                   class="appbar__link {{ request()->routeIs('cabinet') ? 'is-active' : '' }}">
+                                    <i class="bi bi-house-door-fill"></i> Кабинет
+                                </a>
+                                <a href="{{ route('bookings.create') }}"
+                                   class="appbar__link {{ request()->routeIs('bookings.*') ? 'is-active' : '' }}">
+                                    <i class="bi bi-plus-circle-fill"></i> Заявка
+                                </a>
+                            @endif
+                            <span class="appbar__user"><i class="bi bi-person-circle"></i> {{ auth()->user()->full_name }}</span>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="appbar__link appbar__logout"><i class="bi bi-box-arrow-right"></i> Выход</button>
+                            </form>
+                        </nav>
+                    @endauth
+                </div>
             </header>
 
             <main class="content">
