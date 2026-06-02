@@ -21,6 +21,14 @@ class Booking extends Model
         self::STATUS_COMPLETED => 'Мероприятие завершено',
     ];
 
+    /** Доступные способы оплаты (для выпадающего списка). */
+    public const PAYMENT_METHODS = [
+        'Банковская карта',
+        'Наличные',
+        'Безналичный расчёт',
+        'Онлайн-оплата (СБП)',
+    ];
+
     /**
      * @return array<string, string>
      */
