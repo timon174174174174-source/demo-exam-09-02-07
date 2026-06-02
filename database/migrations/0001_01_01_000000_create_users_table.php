@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('login')->unique();   // уникальный логин: латиница + цифры, >= 6 символов
+            $table->string('full_name');         // ФИО
+            $table->string('phone');             // контактный номер телефона
+            $table->string('email');             // e-mail
+            $table->string('password');          // bcrypt-хеш, исходная длина >= 8 символов
+            $table->boolean('is_admin')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
