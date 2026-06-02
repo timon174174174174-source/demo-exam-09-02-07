@@ -41,6 +41,18 @@ docker compose exec app php artisan migrate:fresh --seed
 docker compose down
 ```
 
+## Тестирование и качество кода
+
+```bash
+# автотесты (21 тест: регистрация, вход, заявки, админка, гейтинг отзывов)
+docker compose exec app php artisan test
+
+# проверка стиля кода (Laravel Pint)
+docker compose exec app ./vendor/bin/pint --test
+```
+
+> Если порт 8888 занят, измените его в `docker-compose.yml` (строка `ports`).
+
 ## Структура
 
 - `app/Models` — модели Eloquent (User, Room, Booking, Review)
@@ -49,4 +61,5 @@ docker compose down
 - `database/migrations` — схема БД
 - `database/seeders` — помещения и учётная запись администратора
 - `routes/web.php` — маршруты
-- `docs/` — проектная документация и задание экзамена
+- `tests/Feature` — автотесты приложения
+- `docs/` — проектная документация, ER-диаграмма и задание экзамена
