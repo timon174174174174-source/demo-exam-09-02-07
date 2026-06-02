@@ -6,6 +6,23 @@
     <h1 class="page-title">Здравствуйте, {{ auth()->user()->full_name }}!</h1>
     <p class="page-subtitle">Здесь собраны ваши заявки на бронирование помещений.</p>
 
+    <div class="slider" data-slider>
+        <div class="slider__track">
+            @foreach (['slide1', 'slide2', 'slide3', 'slide4'] as $slide)
+                <div class="slider__slide">
+                    <img src="{{ asset('images/slides/'.$slide.'.svg') }}" alt="Конференции.РФ" loading="lazy">
+                </div>
+            @endforeach
+        </div>
+        <button type="button" class="slider__btn slider__btn--prev" aria-label="Назад"><i class="bi bi-chevron-left"></i></button>
+        <button type="button" class="slider__btn slider__btn--next" aria-label="Вперёд"><i class="bi bi-chevron-right"></i></button>
+        <div class="slider__dots">
+            @for ($i = 0; $i < 4; $i++)
+                <button type="button" class="slider__dot {{ $i === 0 ? 'is-active' : '' }}" aria-label="Слайд {{ $i + 1 }}"></button>
+            @endfor
+        </div>
+    </div>
+
     <a href="{{ route('bookings.create') }}" class="btn">
         <i class="bi bi-plus-circle"></i> Оформить новую заявку
     </a>
@@ -69,3 +86,7 @@
         </div>
     @endforelse
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/slider.js') }}"></script>
+@endpush

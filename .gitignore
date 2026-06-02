@@ -29,3 +29,6 @@ Thumbs.db
 # База данных SQLite (пересоздаётся миграциями и сидерами через entrypoint)
 /database/*.sqlite
 /database/*.sqlite-journal
+
+# Локальные настройки инструментов
+/.claude

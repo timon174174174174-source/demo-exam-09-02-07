@@ -354,6 +354,32 @@ select.field__control {
     padding: 10px;
 }
 
+/* Слайдер -------------------------------------------------------------------- */
+.slider { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 18px; background: #e2e8f0; }
+.slider__track { display: flex; transition: transform .55s cubic-bezier(.4, 0, .2, 1); }
+.slider__slide { min-width: 100%; }
+.slider__slide img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.slider__btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 36px; height: 36px; border-radius: 50%; border: none;
+    background: rgba(255, 255, 255, .85); color: var(--ink); cursor: pointer;
+    display: flex; align-items: center; justify-content: center; font-size: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
+    transition: background .15s ease, transform .15s ease;
+}
+.slider__btn:hover { background: #fff; }
+.slider__btn:active { transform: translateY(-50%) scale(.88); }
+.slider__btn--prev { left: 10px; }
+.slider__btn--next { right: 10px; }
+.slider__dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; }
+.slider__dot { width: 8px; height: 8px; border-radius: 50%; border: none; background: rgba(255, 255, 255, .55); cursor: pointer; padding: 0; transition: width .25s ease, background .25s ease; }
+.slider__dot.is-active { width: 22px; border-radius: 5px; background: #fff; }
+
+/* Предпросмотр выбранного помещения ----------------------------------------- */
+.room-preview { margin: -4px 0 16px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--line); animation: card-in .35s ease both; }
+.room-preview img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.room-preview p { padding: 10px 12px; margin: 0; }
+
 /* Статичные звёзды оценки ---------------------------------------------------- */
 .stars-static i { color: #f59e0b; font-size: 15px; }
 
