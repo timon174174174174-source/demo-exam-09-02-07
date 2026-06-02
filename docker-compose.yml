@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    container_name: conferencerf_app
+    ports:
+      - "8888:8000"
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      - PHP_CLI_SERVER_WORKERS=4
+    command: ["sh", "docker/entrypoint.sh"]
