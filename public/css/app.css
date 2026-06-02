@@ -45,7 +45,6 @@ body {
     background: var(--surface);
     position: relative;
     box-shadow: 0 0 60px rgba(15, 23, 42, .12);
-    overflow: hidden;
 }
 
 .app {
@@ -414,6 +413,26 @@ select.field__control {
 }
 .pager span.disabled { color: #cbd5e1; }
 .pager a:hover { border-color: var(--brand); background: #f5f3ff; }
+
+/* Микровзаимодействия ------------------------------------------------------- */
+.card, .booking, .stat { transition: transform .18s ease, box-shadow .22s ease; }
+.card:hover, .booking:hover, .stat:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+
+.btn { position: relative; overflow: hidden; }
+.btn::after {
+    content: ""; position: absolute; top: 0; left: -130%;
+    width: 60%; height: 100%; transform: skewX(-20deg);
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .35), transparent);
+    transition: left .6s ease;
+}
+.btn:hover::after { left: 150%; }
+
+.tabbar__item.is-active::before {
+    content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 26px; height: 3px; border-radius: 0 0 3px 3px; background: var(--brand);
+    animation: tab-in .3s ease both;
+}
+@keyframes tab-in { from { width: 0; opacity: 0; } to { width: 26px; opacity: 1; } }
 
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }

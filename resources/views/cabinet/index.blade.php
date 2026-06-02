@@ -30,7 +30,7 @@
     <h2 class="section-title"><i class="bi bi-clock-history"></i> История заявок</h2>
 
     @forelse ($bookings as $booking)
-        <article class="booking">
+        <article class="booking" style="animation-delay: {{ $loop->index * 60 }}ms">
             <div class="booking__head">
                 <div class="booking__room"><i class="bi bi-building"></i> {{ $booking->room->name }}</div>
                 <span class="badge badge--{{ $booking->status }}">{{ $booking->statusLabel() }}</span>

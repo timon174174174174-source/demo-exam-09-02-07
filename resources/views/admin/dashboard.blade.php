@@ -54,7 +54,7 @@
     </form>
 
     @forelse ($bookings as $booking)
-        <article class="booking admin-booking">
+        <article class="booking admin-booking" style="animation-delay: {{ $loop->index * 60 }}ms">
             <div class="admin-booking__top">
                 <div class="admin-booking__user">
                     {{ $booking->user->full_name }}
