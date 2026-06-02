@@ -11,7 +11,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Booking extends Model
 {
     public const STATUS_NEW = 'new';
+
     public const STATUS_ASSIGNED = 'assigned';
+
     public const STATUS_COMPLETED = 'completed';
 
     /** Список статусов: код => подпись. */
